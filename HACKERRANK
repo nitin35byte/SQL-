@@ -1,4 +1,4 @@
-Amber's conglomerate corporation just acquired some new companies. Each of the companies follows this hierarchy:
+1. Amber's conglomerate corporation just acquired some new companies. Each of the companies follows this hierarchy:
 
 Given the table schemas below, write a query to print the company_code, founder name, total number of lead managers, total number of senior managers, total number of managers, and total number of employees. Order your output by ascending company_code.
 
@@ -51,3 +51,27 @@ join Employee as e
 on e.manager_code = m.manager_code
 group by c.company_code, c.founder
 order by c.company_code;
+
+
+2. Write a query to print all prime numbers less than or equal to . Print your result on a single line, and use the ampersand () character as your separator (instead of a space).
+
+For example, the output for all prime numbers  would be:
+
+
+SELECT GROUP_CONCAT(NUMB SEPARATOR '&')
+FROM (
+    SELECT @num:=@num+1 as NUMB FROM
+    information_schema.tables t1,
+    information_schema.tables t2,
+    (SELECT @num:=1) tmp
+) tempNum
+WHERE NUMB<=1000 AND NOT EXISTS(
+		SELECT * FROM (
+			SELECT @nu:=@nu+1 as NUMA FROM
+			    information_schema.tables t1,
+			    information_schema.tables t2,
+			    (SELECT @nu:=1) tmp1
+			    LIMIT 1000
+			) tatata
+		WHERE FLOOR(NUMB/NUMA)=(NUMB/NUMA) AND NUMA<NUMB AND NUMA>1
+	)

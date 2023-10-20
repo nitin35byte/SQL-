@@ -1,0 +1,35 @@
+SELECT 
+    MAX(CASE
+        WHEN DEPT_NAME = 'Customer Service' THEN First_name
+    END) AS 'Customer Service',
+    MAX(CASE
+        WHEN DEPT_NAME = 'Development' THEN First_name
+    END) AS 'Development',
+    MAX(CASE
+        WHEN DEPT_NAME = 'Finance' THEN First_name
+    END) AS 'Finance',
+    MAX(CASE
+        WHEN DEPT_NAME = 'Human Resources' THEN First_name
+    END) AS 'Human Resources',
+    MAX(CASE
+        WHEN DEPT_NAME = 'Marketing' THEN First_name
+    END) AS 'Marketing',
+    MAX(CASE
+        WHEN DEPT_NAME = 'Research' THEN First_name
+    END) AS 'Research',
+    MAX(CASE
+        WHEN DEPT_NAME = 'Sales' THEN First_name
+    END) AS 'Sales',
+    MAX(CASE
+        WHEN DEPT_NAME = 'Production' THEN First_name
+    END) AS 'Production',
+    MAX(CASE
+        WHEN DEPT_NAME = 'Quality Management' THEN First_name
+    END) AS 'Quality Management'
+FROM
+    (SELECT 
+        d.dept_name, p.first_name
+    FROM
+        dept_emp e
+    JOIN departments d ON e.dept_no = d.dept_no
+    JOIN employees p ON e.emp_no = p.emp_no) sub;

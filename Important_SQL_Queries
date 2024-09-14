@@ -66,6 +66,9 @@ select * from salaries where salary between '30000' and '60000';
 select Max(salary) from salaries where salary not in (select max(salary)  from salaries);(we can use Top function)
 
 select salary from salaries order by salary desc limit 3 offset 1;
+SELECT MAX(salary) 
+FROM salaries 
+WHERE salary < (SELECT MAX(salary) FROM salaries);
 
 SELECT MAX(salary) AS salary 
 FROM salaries 
